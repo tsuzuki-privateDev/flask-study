@@ -1,11 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+favorite_list = ["野球", "競馬", "釣り", "お笑い"]
 
-@app.route("/")
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    favorite_list = ["野球", "競馬", "釣り", "お笑い"]
+
+    if request.method == "POST":
+        favorite_list.append(request.form["favorite_add"])
+        return redirect(url_for("index"))
+
     return render_template("index.html", favorite_list=favorite_list)
 
 

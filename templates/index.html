@@ -5,4 +5,10 @@
             <li>{{favorite}}</li>
         {% endfor %}
     </ul>
+
+    <form method="post">
+        <label>好きなものを入力してください</label>
+        <input type="text" name="favorite_add" required><br>
+        <input type="submit" value="登録">
+    </form>
 {% endblock %}
